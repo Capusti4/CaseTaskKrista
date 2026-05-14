@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe49b8ff-9c1e-4216-b800-9d01c0fa94ce" name="Changes" comment="" />
+    <list default="true" id="fe49b8ff-9c1e-4216-b800-9d01c0fa94ce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/CaseTask/ExcelException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/CaseTask/ExcelReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CaseTask/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CaseTask/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,12 +19,25 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Capusti4"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Capusti4/CaseTaskKrista.git",
+    "accountId": "fc382b50-85be-4f90-b857-c3de79ee7ff3"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6
 }]]></component>
@@ -82,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1778578372960</updated>
-      <workItem from="1778578373982" duration="11241000" />
+      <workItem from="1778578373982" duration="15799000" />
     </task>
     <servers />
   </component>
