@@ -18,16 +18,16 @@ import java.util.Map;
 public class ExcelReader {
     private final Workbook workbook;
     private final FileOutputStream out;
-    private final List<String> criteriaTypes = List.of(new String[]{"", "-", "min", "max", "sum"});
+    private final List<String> criteriaTypes = List.of(new String[]{"", "-", "min", "max", "sum", "concat"});
     private final Map<Integer, Object> criteria = new HashMap<>();
     private final List<List<Cell>> cRows = new ArrayList<>();
     private final List<List<Row>> groups = new ArrayList<>();
     private final Sheet sheet;
 
-
     private double sum;
     private double min;
     private double max;
+    private String concat;
 
     public ExcelReader(String filePath) throws IOException {
         workbook = new XSSFWorkbook(new FileInputStream(filePath));
@@ -110,6 +110,7 @@ public class ExcelReader {
             sum = 0;
             min = Double.MAX_VALUE;
             max = Double.MIN_VALUE;
+            concat = "";
             Row newRow = sheet.createRow(groups.indexOf(group));
             for (Row row : group) {
                 for (Cell cell : row) {
@@ -142,6 +143,12 @@ public class ExcelReader {
                 if (group.indexOf(row) == group.size() - 1) {
                     newRow.createCell(cell.getColumnIndex())
                             .setCellValue(max);
+                }
+            } else if (criteria.get(cell.getColumnIndex()).equals("concat")) {
+                concat += cell.getStringCellValue();
+                if (group.indexOf(row) == group.size() - 1) {
+                    newRow.createCell(cell.getColumnIndex())
+                            .setCellValue(concat);
                 }
             }
         }
