@@ -19,7 +19,6 @@ public class Main {
         try {
             System.out.print("Write file path: ");
             String filePath = new Scanner(System.in).nextLine();
-//            String filePath = "C:\\Users\\Capusti4\\Desktop\\test.xlsx";
             reader = new ExcelReader(filePath);
             reader.formatData();
             System.out.println("Result is saved to: " + filePath.split(".xlsx")[0] + "_result.xlsx");
