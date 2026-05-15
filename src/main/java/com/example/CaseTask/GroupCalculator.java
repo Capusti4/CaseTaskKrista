@@ -2,7 +2,6 @@ package com.example.CaseTask;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.util.CellReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +39,7 @@ class GroupCalculator {
         try {
             return cell.getNumericCellValue();
         } catch (Exception e) {
-            throw new ExcelException("Cell " + new CellReference(cell.getRowIndex(), cell.getColumnIndex()).formatAsString() + " must be numeric");
+            throw new MustBeNumericException(cell);
         }
     }
 
