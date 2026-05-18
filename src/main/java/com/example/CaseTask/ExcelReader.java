@@ -30,9 +30,6 @@ public class ExcelReader {
 
     private void readCriteria() {
         for (Cell cell : sheet.getRow(0)) {
-            if (cell == null || cell.getCellType() == CellType.BLANK) {
-                continue;
-            }
             criteriaIndexes.put(cell.getColumnIndex(), cell.getStringCellValue().toLowerCase());
         }
         for (int i = 0; i < sheet.getRow(0).getFirstCellNum(); i++) {
@@ -69,7 +66,7 @@ public class ExcelReader {
             for (int i = 0; i <= Collections.max(criteriaIndexes.keySet()); i++) {
                 String type = (String) criteriaIndexes.get(i);
 
-                if (type.equals("-")) {
+                if (type == null || type.equals("-")) {
                     colIdx++;
                     continue;
                 }
@@ -109,5 +106,4 @@ public class ExcelReader {
             default -> "";
         };
     }
-
 }
