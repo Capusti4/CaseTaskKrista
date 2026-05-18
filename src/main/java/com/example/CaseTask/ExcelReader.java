@@ -30,10 +30,13 @@ public class ExcelReader {
 
     private void readCriteria() {
         for (Cell cell : sheet.getRow(0)) {
-            if (getStringValue(cell).isEmpty()) {
-                break;
+            if (cell == null || cell.getCellType() == CellType.BLANK) {
+                continue;
             }
             criteriaIndexes.put(cell.getColumnIndex(), cell.getStringCellValue().toLowerCase());
+        }
+        for (int i = 0; i < sheet.getRow(0).getFirstCellNum(); i++) {
+            criteriaIndexes.put(i, "");
         }
     }
 
@@ -43,7 +46,9 @@ public class ExcelReader {
 
             List<Object> key = new ArrayList<>();
             for (Integer idx : criteriaIndexes.keySet()) {
-                if (!List.of(new String[]{"-", "min", "max", "sum", "concat"}).contains(criteriaIndexes.get(idx).toString())) {
+                if (!List.of(new String[]{"-", "min", "max", "sum", "concat"}).contains(criteriaIndexes.get(idx).toString())
+                    && row.getCell(idx) != null
+                ) {
                     key.add(getCellValue(row.getCell(idx)));
                 }
             }
@@ -64,7 +69,10 @@ public class ExcelReader {
             for (int i = 0; i <= Collections.max(criteriaIndexes.keySet()); i++) {
                 String type = (String) criteriaIndexes.get(i);
 
-                if (type == null || type.equals("-")) continue;
+                if (type.equals("-")) {
+                    colIdx++;
+                    continue;
+                }
 
                 Object val = stats.getVal(i, type);
                 Cell newCell = newRow.createCell(colIdx++);
@@ -102,11 +110,4 @@ public class ExcelReader {
         };
     }
 
-    private String getStringValue(Cell cell) {
-        try {
-            return cell.getStringCellValue();
-        } catch (IllegalStateException e) {
-            throw new MustBeStringException(cell);
-        }
-    }
 }

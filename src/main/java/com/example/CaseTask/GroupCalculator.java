@@ -2,6 +2,7 @@ package com.example.CaseTask;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.CellReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +50,8 @@ class GroupCalculator {
             case "min" -> mins.get(idx);
             case "max" -> maxs.get(idx);
             case "concat" -> String.join(", ", concats.getOrDefault(idx, List.of()));
-            default -> criteriaValues.get(idx);
+            case "" -> criteriaValues.get(idx);
+            default -> throw new ExcelException("Invalid type at cell " + new CellReference(0, idx).formatAsString());
         };
     }
 }
